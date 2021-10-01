@@ -15,6 +15,7 @@ function inAscOrder(arr) {
 }
 
 start.addEventListener('click',()=>{
+    debugger;
     field.innerHTML='';
     start.textContent='Начать заново';
     shuffle(order);
@@ -22,17 +23,15 @@ start.addEventListener('click',()=>{
         cells[i].style.backgroundColor=cellColor;
         field.appendChild(cells[order[i]]);
     };
-    cells.forEach(elem=>{
-
-        elem.addEventListener('click',()=>{
+    cells.forEach(elem=>{elem.addEventListener('click',()=>{
             let top = elem.offsetTop;
             let left = elem.offsetLeft;
             let zeroTop = zeroCell.offsetTop;
             let zeroLeft = zeroCell.offsetLeft;
-            if (((top===zeroTop && left-zeroLeft===60)
-                ||(top===zeroTop && left-zeroLeft===-60))
-                ||((left===zeroLeft && top-zeroTop===60)
-                    ||(left===zeroLeft && top-zeroTop===-60))){
+            if (((top===zeroTop && left-zeroLeft===70)
+                ||(top===zeroTop && left-zeroLeft===-70))
+                ||((left===zeroLeft && top-zeroTop===70)
+                    ||(left===zeroLeft && top-zeroTop===-70))){
                 let zeroIndex = order.indexOf(15);
                 let cellIndex  = order.indexOf(elem.id-1);
                 order[zeroIndex]=elem.id-1;
@@ -40,13 +39,13 @@ start.addEventListener('click',()=>{
                 for (let i=0;i<order.length;i++){
                     cells[i].style.backgroundColor=cellColor;
                     field.appendChild(cells[order[i]]);
-                };
+                }
                 if (inAscOrder(order)){
                     cells.forEach(item=>{
                         item.style.backgroundColor='peachpuff'
                     });
                 }
             }
-        })
+        });
     })
 })
