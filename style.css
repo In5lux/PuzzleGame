@@ -1,6 +1,12 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
 body{
     background-color: #869f8b;
 }
+
 .container{
     border:5px solid peachpuff;
     padding: 20px;
@@ -12,13 +18,22 @@ body{
     width:280px;
     height:282px;
     font-size: 0;
+}
+.game-stat {
+    border: 2px solid peachpuff;
+    background-color: #fff0b9;
+    border-radius: 3px;
+    text-align: center;
+    margin-top: 20px;
+    padding: 5px;
+    font-size: 0.9em;
 
 }
 .cell{
     display:inline-block;
     box-sizing: border-box;
     margin: 0;
-    padding: 0;
+    padding: 23px;
     border:1px solid rgba(1, 26, 7, 0.89);
     width:70px;
     height:70px;

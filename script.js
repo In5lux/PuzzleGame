@@ -1,9 +1,15 @@
-let field = document.querySelector('.wrapper');
-let cells =field.querySelectorAll('.cell');
-let start = document.querySelector('#start');
-let zeroCell = field.querySelector('.zero-cell');
+const field = document.querySelector('.wrapper');
+const cells =field.querySelectorAll('.cell');
+const start = document.querySelector('#start');
+const zeroCell = field.querySelector('.zero-cell');
+const cellColor = '#e3ffb9';
+const steps = document.querySelector('#steps');
+const score = document.querySelector('#score');
+let stepsCount=0;
 let order = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
-let cellColor = '#e3ffb9';
+
+localStorage.score >0 ?  score.textContent=`${localStorage.score}` : 0;
+
 function shuffle(array) {
     array.sort(() => Math.random() - 0.5);
 }
@@ -15,7 +21,6 @@ function inAscOrder(arr) {
 }
 
 start.addEventListener('click',()=>{
-    debugger;
     field.innerHTML='';
     start.textContent='Начать заново';
     shuffle(order);
@@ -40,12 +45,17 @@ start.addEventListener('click',()=>{
                     cells[i].style.backgroundColor=cellColor;
                     field.appendChild(cells[order[i]]);
                 }
+                stepsCount++
+                steps.textContent=`${stepsCount}`;
                 if (inAscOrder(order)){
                     cells.forEach(item=>{
-                        item.style.backgroundColor='peachpuff'
+                        item.style.backgroundColor='peachpuff';
+                        score.textContent=`${stepsCount}`;
+                        localStorage.score=`${stepsCount}`;
                     });
                 }
             }
+
         });
     })
 })
